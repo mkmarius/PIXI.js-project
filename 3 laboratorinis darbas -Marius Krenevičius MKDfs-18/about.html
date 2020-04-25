@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="./js/blotter.min.js"></script>
+    <script src="./js/fliesMaterial.js"></script>
+    <link rel="stylesheet" href="./Styles/style.css" />
+    <title>Portfolio</title>
+  </head>
+  <body>
+    <header>
+      <h3>My portfolio</h3>
+      <hr />
+      <nav>
+        <ul>
+          <li><a href="./index.html " class="links">Home</a></li>
+          <li><a href="./gallery.html" class="links">Gallery</a></li>
+          <li><a href="about.html" class="links">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="loader"></div>
+    <main>
+      <section class="about-section">
+        <div class="about">
+          <div class="desc">
+            <h1 id="distortion-text"></h1>
+            <p>
+              Marius Krenevičius is a photographer and a web designer who is
+              passionate about traveling the world and nature and has been from
+              a young age. When he took his first photo, he knew that the world
+              was too interesting and beautiful to not document it. At 21 years
+              old he has already been to 20 countries around Europe and doesn't
+              plan to stop. Marius got introduced to photography by his father,
+              who is always taking pictures to document the trips and to be able
+              to remember them later. Marius decided to do so as well and that
+              remained the most important reason for photography to him.
+            </p>
+          </div>
+          <div class="foto">
+            <img src="images/edited-7681-web.jpg" alt="me" />
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>Marius Krenevičius &copy; 2020</footer>
+    <script>
+      const heading = document.querySelector("h3");
+      const text = new Blotter.Text("About me", {
+        family: "Helvetica",
+        size: 80,
+        fill: "#000",
+        paddingTop: 80,
+        paddingBottom: 80,
+      });
+
+      const material = new Blotter.FliesMaterial();
+      material.uniforms.uPointCellWidth.value = 0.01;
+      material.uniforms.uPointRadius.value = 1;
+      material.uniforms.uSpeed.value = 2;
+
+      const blotter = new Blotter(material, {
+        texts: text,
+      });
+
+      const scope = blotter.forText(text);
+      const elem = document.getElementById("distortion-text");
+      scope.appendTo(elem);
+    </script>
+    <script src="./js/pagetransitions.js"></script>
+  </body>
+</html>
